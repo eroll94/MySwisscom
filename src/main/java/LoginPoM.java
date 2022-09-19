@@ -6,6 +6,7 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 public class LoginPoM extends Base{
 
     @iOSXCUITFindBy(iOSNsPredicate = "label == 'Log in'")
+//            acesabiliti -  Log in
     MobileElement loginBtnMain;
 
     @iOSXCUITFindBy(iOSNsPredicate = "label == 'Username or mobile number'")

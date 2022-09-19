@@ -3,7 +3,7 @@
 <suite name="Suite1" verbose="1" >
     <test name="iOS_PoC" >
         <classes>
-            <class name="logInlogOutPoM" />
+            <class name="SmokeTestIOS" />
         </classes>
     </test>
 

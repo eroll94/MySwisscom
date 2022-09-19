@@ -35,7 +35,7 @@ public class LogoutPoM extends Base{
         clickOnNav();
 //        logOut();
         Thread.sleep(3000);
-        WebElement logoutBtn = driver.findElementByClassName("**/XCUIElementTypeButton[`label == \"Log out\"`]"); //find another solution maybe issue!
+        WebElement logoutBtn = driver.findElementByXPath("//XCUIElementTypeButton[@name=\"Log out\"]");
         logoutBtn.click();
         Thread.sleep(1000);
         TouchAction touchActionLogout = new TouchAction(driver);
