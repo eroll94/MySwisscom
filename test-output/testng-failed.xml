@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default Suite]">
+  <test thread-count="5" name="MySwisscom_iOS_PoC(failed)">
+    <classes>
+      <class name="MySwisscom_iOS_PoC.PoC">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="testPoC"/>
+        </methods>
+      </class> <!-- MySwisscom_iOS_PoC.PoC -->
+    </classes>
+  </test> <!-- MySwisscom_iOS_PoC(failed) -->
+</suite> <!-- Failed suite [Default Suite] -->
