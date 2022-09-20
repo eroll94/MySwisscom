@@ -22,6 +22,7 @@ public class NotificationPoM extends Base{
         click(notNextBtn);
         click(notNextBtn);
         click(notNextBtn);
+//        click(notNextBtn);
     }
 
     public void clickOnNotifyBtn(){

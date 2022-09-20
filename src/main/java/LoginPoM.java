@@ -7,8 +7,8 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 public class LoginPoM extends Base{
 
     @iOSXCUITFindBy(iOSNsPredicate = "label == 'Log in'")
-//  acesabiliti -  Log in
-    @AndroidFindBy(className = "android.widget.Button")
+//    @AndroidFindBy(className = "android.widget.Button")
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View[3]/android.view.View/android.widget.Button\n")
     MobileElement loginBtnMain;
 
     @iOSXCUITFindBy(iOSNsPredicate = "label == 'Username or mobile number'")
@@ -16,7 +16,7 @@ public class LoginPoM extends Base{
     MobileElement usernameElement;
 
     @iOSXCUITFindBy (iOSNsPredicate = "label == 'Continue'")
-    @AndroidFindBy(className = "android.widget.Button")
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"WebView__Window\"]/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View[4]/android.view.View[2]/android.view.View/android.widget.Button\n")
     MobileElement continueBtn;
 
     @iOSXCUITFindBy (iOSNsPredicate = "label == 'Password'")
@@ -24,7 +24,7 @@ public class LoginPoM extends Base{
     MobileElement passwordElement;
 
     @iOSXCUITFindBy (iOSNsPredicate = "label == 'Login'")
-    @AndroidFindBy(className = "android.widget.Button")
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"WebView__Window\"]/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[3]/android.view.View/android.widget.Button")
     MobileElement loginBtn;
 
 
@@ -50,7 +50,8 @@ public class LoginPoM extends Base{
     public void clickLoginToMain(){
         click(loginBtn);
     }
-    public void logIn(String username, String password){
+    public void logIn(String username, String password) throws InterruptedException {
+        Thread.sleep(2000);
         clickOnLogin();
         enterUsername(username);
         clickContinue();

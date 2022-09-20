@@ -37,7 +37,8 @@ public class TestBase {
             cap.setCapability("deviceName", "Android SDK built for x86");
             cap.setCapability("udid","emulator-5554");
             cap.setCapability("platformName", "Android");
-            cap.setCapability("platformVersion","10");
+            cap.setCapability("platformVersion","11");
+//            cap.setCapability("platformVersion","10");
             cap.setCapability("appPackage","com.swisscom.appnext.dev.vega");
             cap.setCapability("appActivity","com.swisscom.myswisscom.MainActivity");
 //        cap.setCapability("appActivity","com.swisscom.loginsdk.LoginActivity");

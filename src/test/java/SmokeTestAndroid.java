@@ -1,5 +1,8 @@
+import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
+import io.appium.java_client.android.nativekey.AndroidKey;
 
 import java.net.MalformedURLException;
 
@@ -19,15 +22,15 @@ public class SmokeTestAndroid extends TestBase {
         navButtonsPoM = new NavButtonsPoM(driver);
         notificationPoM = new NotificationPoM(driver);
         notificationPoM.clickOnNextBtn();
-//        loginPoM.logIn("ccqgseo56.48", "Tester@123"); ----> check this tommorrow pop-up appears!
-        Thread.sleep(4000);
-        driver.findElementByClassName("android.widget.EditText").sendKeys("ccqgseo56.48");
-        Thread.sleep(2000);
-        driver.findElementByClassName("android.widget.Button").click();
-        Thread.sleep(2000);
-        driver.findElementByClassName("android.widget.EditText").sendKeys("Tester@123");
-        Thread.sleep(2000);
-        driver.findElementByClassName("android.widget.Button").click();
+        loginPoM.logIn("ccqgseo56.48", "Tester@123");
+        navButtonsPoM.billsBtnClick();
+        Thread.sleep(5000);
+        navButtonsPoM.shopBtnClick();
+        Thread.sleep(5000);
+        navButtonsPoM.panoramaBtnClick();
+        Thread.sleep(5000);
+        navButtonsPoM.yourProductClick();
+        Thread.sleep(5000);
 
     }
 

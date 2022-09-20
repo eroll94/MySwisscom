@@ -1,6 +1,7 @@
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
 public class NavButtonsPoM extends Base {
@@ -10,15 +11,19 @@ public class NavButtonsPoM extends Base {
     }
 
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeLink[`label == \"Panorama\"`][1]")
+    @AndroidFindBy(accessibility = "Panorama")
     MobileElement panoramaBtn;
 
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeLink[`label == \"Your products\"`][1]")
+    @AndroidFindBy(accessibility = "Your products")
     MobileElement yourProductsBtn;
 
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeLink[`label == \"Bills\"`][1]")
+    @AndroidFindBy(accessibility = "Bills")
     MobileElement billsBtn;
 
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeLink[`label == \"Shop\"`][1]")
+    @AndroidFindBy(accessibility = "Shop")
     MobileElement shopBtn;
 
     public void panoramaBtnClick(){
@@ -35,7 +40,5 @@ public class NavButtonsPoM extends Base {
     public void shopBtnClick(){
         click(shopBtn);
     }
-
-//xpath    (//XCUIElementTypeLink[@name="Bills"])[1]
 
 }
