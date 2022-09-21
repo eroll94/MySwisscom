@@ -57,6 +57,10 @@ public class FirstScenarioPoM extends Base{
     @iOSXCUITFindBy(iOSNsPredicate = "label == \"079 000 21 23\"")
     MobileElement numForFirstTestInFirstScenario;
 
+    @iOSXCUITFindBy(iOSNsPredicate = "label == \"032 931 35 98\"")
+    MobileElement numForThirdTestInFirstScenario;
+
+
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeLink[`label == \"Back to previous page.\"`][3]")
 //            (xpath = "(//XCUIElementTypeLink[@name=\"Back to previous page.\"])[3]")
     MobileElement backToPreviosPageFirstScenario;
@@ -114,6 +118,9 @@ public class FirstScenarioPoM extends Base{
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"6.92\"]")
 // ios predicate --> label == "42.72"
     MobileElement clickOnRunningCostForSecondTest;
+
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"81.90\"])[2]")
+    MobileElement biMonthforFirst;
 
     //class chain ---> **/XCUIElementTypeLink[`label == "Display details for June 2022"`]
     //predicate -----> label == "Display details for June 2022"
@@ -258,6 +265,14 @@ public class FirstScenarioPoM extends Base{
         click(numForFirstTestInFirstScenario);
     }
 
+    public void thirdTestFirstScen(){
+        click(dropdownInv);
+        click(numForThirdTestInFirstScenario);
+        scrollObject.put("direction", "down");
+        scrollObject.put("xpath","(//XCUIElementTypeStaticText[@name=\"81.90\"])[2]");
+        driver.executeScript("mobile:scroll", scrollObject);
+        click(biMonthforFirst);
 
+    }
 
 }

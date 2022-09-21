@@ -15,9 +15,11 @@ public class TestBase {
         DesiredCapabilities desCap = new DesiredCapabilities();
         desCap.setCapability("platformName", "iOS");
 //        desCap.setCapability("platformVersion", "15.2.1");
-        desCap.setCapability("platformVersion", "15.2");
+//        desCap.setCapability("platformVersion", "15.2");
+        desCap.setCapability("platformVersion", "15.5");
 //        desCap.setCapability("udid", "f9de75d027b1db338fd8bfcd7ee07f1442ca79eb");
-        desCap.setCapability("udid", "FBB6C72E-2C3E-4676-92B0-4D2474A6764E");
+        desCap.setCapability("udid", "D72ACB1F-C557-460B-8BB3-707E078F797C");
+//        desCap.setCapability("udid", "FBB6C72E-2C3E-4676-92B0-4D2474A6764E");
         desCap.setCapability("deviceName", "Iphone 13");
 //        desCap.setCapability("deviceName", "Iphone 8");
         desCap.setCapability("xcodeOrgId", "appleid@sixsentix.com");

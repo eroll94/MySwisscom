@@ -48,7 +48,7 @@ public class FirstScenario extends TestBase {
         //open pdf
         firstScenarioPoM.clickOnBillForPreviosMonth();
         firstScenarioPoM.openAndClosePdf();
-        String pdfText = String.valueOf(pdfUtil.getText("/Users/Erol/Desktop/Pdfs/firstTest/MYSWISSCOM_00.pdf"));
+        String pdfText = String.valueOf(pdfUtil.getText("/Users/sixsentix/Desktop/pdfs//MYSWISSCOM_00.pdf"));
         System.out.println("This is translated text from pdf is : " + pdfText);
         Assert.assertTrue(pdfText.contains("Second Feb"),"failed");
         Assert.assertTrue(pdfText.contains("CHF 846.25"),"failed");
@@ -67,7 +67,7 @@ public class FirstScenario extends TestBase {
         secondScenarioPoM = new SecondScenarioPoM(driver);
         firstScenarioPoM = new FirstScenarioPoM(driver);
         //login and payment
-//        loginPoM.logIn("adriandezember.blgtests1", "Tester@1234");
+        loginPoM.logIn("adriandezember.blgtests1", "Tester@1234");
 
         navButtonsPoM.billsBtnClick();
         firstScenarioPoM.clickOnDropDown();
@@ -93,15 +93,29 @@ public class FirstScenario extends TestBase {
 
     }
     @Test
-    public void tc3() throws MalformedURLException, InterruptedException {
+    public void tc3() throws IOException, InterruptedException {
         iOSsetup();
         System.out.println("Started app");
         loginPoM = new LoginPoM(driver);
         logoutPoM = new LogoutPoM(driver);
         navButtonsPoM = new NavButtonsPoM(driver);
         secondScenarioPoM = new SecondScenarioPoM(driver);
+        firstScenarioPoM = new FirstScenarioPoM(driver);
         //login and payment
         loginPoM.logIn("rfshscye.ftcbhyxviv", "SixTest@12");
+        navButtonsPoM.billsBtnClick();
+        firstScenarioPoM.thirdTestFirstScen();
+        firstScenarioPoM.openAndClosePdf();
+        String pdfText = String.valueOf(pdfUtil.getText("/Users/sixsentix/Desktop/pdfs//MYSWISSCOM_BiMonthly.pdf"));
+        System.out.println("This is translated text from pdf is : " + pdfText);
+        Assert.assertTrue(pdfText.contains("Bilnaz Aebli"),"failed");
+        Assert.assertTrue(pdfText.contains("CHF 81.90"),"failed");
+        Assert.assertTrue(pdfText.contains("032 931 35 98"), "failed");
+        //logout
+        navButtonsPoM.billsBtnClick();
+        logoutPoM.logOutMain();
+
+
 
     }
     @Test(description = "pdfs should be verified only")
@@ -121,7 +135,7 @@ public class FirstScenario extends TestBase {
         firstScenarioPoM.openAndClosePdf();
 //        accesabilityid --> QLOverlayDoneButtonAccessibilityIdentifier
 
-        String pdfText = String.valueOf(pdfUtil.getText("/Users/Erol/Desktop/Pdfs/fourthTest/1/MYSWISSCOM_00.pdf"));
+        String pdfText = String.valueOf(pdfUtil.getText("/Users/sixsentix/Desktop/pdfs/MYSWISSCOM_00 (1).pdf"));
         System.out.println("This is text from pdf : " + pdfText);
 
         Assert.assertTrue(pdfText.contains("Jayke Jock"),"failed");
@@ -131,7 +145,7 @@ public class FirstScenario extends TestBase {
         firstScenarioPoM.secondBp();
         firstScenarioPoM.openAndClosePdf();
 
-        String pdfTextSec = String.valueOf(pdfUtil.getText("/Users/Erol/Desktop/Pdfs/fourthTest/2/MYSWISSCOM_00.pdf"));
+        String pdfTextSec = String.valueOf(pdfUtil.getText("/Users/sixsentix/Desktop/pdfs/MYSWISSCOM_00 (2).pdf"));
         System.out.println("This is text from pdf : " + pdfTextSec);
         Assert.assertTrue(pdfTextSec.contains("Jayke Jock"),"failed");
         Assert.assertTrue(pdfTextSec.contains("CHF 103.25"),"failed");
