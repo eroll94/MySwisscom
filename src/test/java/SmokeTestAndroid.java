@@ -24,14 +24,7 @@ public class SmokeTestAndroid extends TestBase {
         notificationPoM.clickOnNextBtn();
         loginPoM.logIn("ccqgseo56.48", "Tester@123");
         navButtonsPoM.billsBtnClick();
-        Thread.sleep(5000);
-        navButtonsPoM.shopBtnClick();
-        Thread.sleep(5000);
-        navButtonsPoM.panoramaBtnClick();
-        Thread.sleep(5000);
-        navButtonsPoM.yourProductClick();
-        Thread.sleep(5000);
-
+        logoutPoM.logOutBtnAndroid();
     }
 
 }
