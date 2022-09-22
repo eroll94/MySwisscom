@@ -59,4 +59,5 @@ public class LogoutPoM extends Base{
                 + ".scrollable(true)).scrollIntoView("
                 + "new UiSelector().text(\"Log out\"));")).click();
     }
+
 }

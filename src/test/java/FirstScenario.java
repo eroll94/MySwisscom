@@ -12,7 +12,7 @@ public class FirstScenario extends TestBase {
     LoginPoM loginPoM;
     LogoutPoM logoutPoM;
     NavButtonsPoM navButtonsPoM;
-
+    NotificationPoM notificationPoM;
     FirstScenarioPoM firstScenarioPoM;
 
     PDFUtil pdfUtil = new PDFUtil();
@@ -92,6 +92,41 @@ public class FirstScenario extends TestBase {
 //        firstScenarioPoM.clickOnFilter(); -- nok
 
     }
+    @Test
+    public void tc2Android() throws MalformedURLException, InterruptedException {
+        androidSetup();
+        System.out.println("Started app");
+        loginPoM = new LoginPoM(driver);
+        logoutPoM = new LogoutPoM(driver);
+        navButtonsPoM = new NavButtonsPoM(driver);
+        secondScenarioPoM = new SecondScenarioPoM(driver);
+        firstScenarioPoM = new FirstScenarioPoM(driver);
+        notificationPoM = new NotificationPoM(driver);
+
+        notificationPoM.clickOnNextBtn();
+        loginPoM.logIn("adriandezember.blgtests1", "Tester@1234");
+
+        navButtonsPoM.billsBtnClick();
+        firstScenarioPoM.findPrepaidNumForAndroid();
+
+
+        Thread.sleep(2000);
+        Assert.assertEquals("Telephony to mobile network Swisscom, whole week rate, Start Voice", firstScenarioPoM.telephonyToMobileNetwork.getText(), "failed");
+//        Assert.assertEquals("\uE00F SMS national, whole week rate, Start SMS", firstScenarioPoM.smsNational.getText(), "failed");
+//        Assert.assertEquals("\uE00F MMS national, Start MMS", firstScenarioPoM.mmsNational.getText(), "failed");
+//        Assert.assertEquals("\uE00F Packet usage, Lifeline Data", firstScenarioPoM.packetUsageLifeline1.getText(), "failed");
+//        Assert.assertEquals("\uE00F Packet usage, Lifeline Data", firstScenarioPoM.getPacketUsageLifeline2.getText(), "failed");
+//        Assert.assertEquals("\uE00F Packet, 3071", firstScenarioPoM.packet3071.getText(), "failed");
+//        Assert.assertEquals("\uE00F Packet, Start Data", firstScenarioPoM.startData.getText(), "failed");
+        Assert.assertEquals("\uE00F SMS, worldwide tariff, Start SMS", firstScenarioPoM.smsWWtarif.getText(), "failed");
+//        Assert.assertEquals("\uE00F MMS outgoing abroad, Start MMS", firstScenarioPoM.mmsOutStartMms.getText(), "failed");
+//        Assert.assertEquals("\uE00F Packet, Start Data", firstScenarioPoM.startData2.getText(), "failed");
+//        Assert.assertEquals("\uE00F MMS incoming abroad, Start MMS", firstScenarioPoM.mmsIncomingStartMms.getText(), "failed");
+//        Assert.assertEquals("6.92", firstScenarioPoM.total.getText(), "failed");
+
+    }
+
+
     @Test
     public void tc3() throws IOException, InterruptedException {
         iOSsetup();
