@@ -166,7 +166,8 @@ public class FirstScenarioPoM extends Base{
     MobileElement startData;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeLink[@name=\"\uE00F SMS, worldwide tariff, Start SMS\"]")
-    @iOSXCUITFindBy(xpath = "//android.view.View[@content-desc=\"SMS, worldwide tariff, Start SMS\"]")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"SMS, worldwide tariff, Start SMS\"]/android.widget.TextView")
+
     MobileElement smsWWtarif;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeLink[@name=\"\uE00F MMS outgoing abroad, Start MMS\"]")
