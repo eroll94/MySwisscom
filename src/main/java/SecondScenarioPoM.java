@@ -90,6 +90,7 @@ public class SecondScenarioPoM extends Base{
 //    **/XCUIElementTypeStaticText[`label == "The new means of payment has been added and you can use it immediately."`]
     
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Close subpage and back to previous page.\"]")
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View[3]/android.view.View/android.widget.Button")
     MobileElement closePage;
 
     //xpath //XCUIElementTypeButton[@name="Close subpage and back to previous page."]
@@ -138,9 +139,13 @@ public class SecondScenarioPoM extends Base{
     MobileElement payableBy;
 
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`label == \"Pay online\"`]")
+    @AndroidFindBy(accessibility = "Pay online")
+//  xpath android --> //android.view.View[@content-desc="Pay online"]
     MobileElement payOnline;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Next\"]")
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[5]/android.view.View/android.widget.Button")
+//    @AndroidFindBy(className = "android.widget.Button")
     MobileElement payNextBtn;
 
     @iOSXCUITFindBy(accessibility = "How would you like to pay?")
@@ -254,8 +259,9 @@ public class SecondScenarioPoM extends Base{
         getText(invalidCreditCardVerification);
     }
 
-    public void payOnlineMain(){
+    public void payOnlineMain() throws InterruptedException {
         click(payOnline);
+        Thread.sleep(3000);
         click(payNextBtn);
     }
     public void payableByMain(){
@@ -302,5 +308,13 @@ public class SecondScenarioPoM extends Base{
     }
     public void closeSubAndBack(){
         click(closeSubPageAndBackToPrevios);
+    }
+
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"payable by\"))")
+    MobileElement element;
+
+    public void findByPayableBy(){
+        click(element);
     }
 }

@@ -1,4 +1,5 @@
 import com.testautomationguru.utility.PDFUtil;
+import io.appium.java_client.FindsByAndroidUIAutomator;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -55,8 +56,40 @@ public class FirstScenario extends TestBase {
         //logout
         navButtonsPoM.billsBtnClick();
         logoutPoM.logOutMain();
-
     }
+
+    @Test
+    public void tc1Android() throws MalformedURLException, InterruptedException {
+        androidSetup();
+        System.out.println("Started app");
+        loginPoM = new LoginPoM(driver);
+        logoutPoM = new LogoutPoM(driver);
+        navButtonsPoM = new NavButtonsPoM(driver);
+        secondScenarioPoM = new SecondScenarioPoM(driver);
+        firstScenarioPoM = new FirstScenarioPoM(driver);
+        notificationPoM = new NotificationPoM(driver);
+        //login and payment
+        notificationPoM.clickOnNextBtn();
+        loginPoM.logIn("second.feb1", "SixTest@123");
+        navButtonsPoM.billsBtnClick();
+        firstScenarioPoM.findFirstTestAndClickOnRunCostAndroid();
+        Thread.sleep(3000);
+//        WebElement mobileFirstTestUi = ((FindsByAndroidUIAutomator)driver).findElementByAndroidUIAutomator("new UiSelector().text(\"Intercontinental Pack\")");
+        Assert.assertEquals("blue Mobile L", firstScenarioPoM.mobileLFirstTest.getText(), "failed");
+//        Assert.assertEquals("Intercontinental Pack", firstScenarioPoM.intercontinentalFirstTest.getText(), "failed");
+//        Assert.assertEquals("Simply Digital", firstScenarioPoM.simplyDigFirstTest.getText(), "failed");
+////        Assert.assertEquals("139.90", firstScenarioPoM.totalSubFirstTest.getText(), "failed");
+//        Assert.assertEquals("91.90", firstScenarioPoM.conOutgoingAbroad.getText(), "failed");
+//        Assert.assertEquals("\uE00F Telephony, included", firstScenarioPoM.telephonyIncludedFirstTest.getText(), "failed");
+//        Assert.assertEquals("\uE00F Telephony, standard tariff", firstScenarioPoM.telephonyStandardTarifFirstTest.getText(), "failed");
+//        Assert.assertEquals("\uE00F SMS/MMS, included", firstScenarioPoM.smsMmsIncludedFirstTest.getText(), "failed");
+//        Assert.assertEquals("10.80", firstScenarioPoM.conIncommingAbroad.getText(), "failed");
+//        Assert.assertEquals("\uE00F Telephony, included", firstScenarioPoM.telephonyIncludedFirstTestIncoming.getText(), "failed");
+//        Assert.assertEquals("\uE00F Telephony, standard tariff", firstScenarioPoM.telStandardIncoming.getText(), "failed");
+//        Assert.assertEquals("\uE00F 102.70", firstScenarioPoM.totalConFirstTest.getText(), "failed");
+    }
+
+
     @Test(description = "only should be verified running cost for current month")
     public void tc2() throws MalformedURLException, InterruptedException {
         iOSsetup();
@@ -109,10 +142,8 @@ public class FirstScenario extends TestBase {
         navButtonsPoM.billsBtnClick();
         firstScenarioPoM.findPrepaidNumForAndroid();
 
-
-        Thread.sleep(2000);
         Assert.assertEquals("Telephony to mobile network Swisscom, whole week rate, Start Voice", firstScenarioPoM.telephonyToMobileNetwork.getText(), "failed");
-//        Assert.assertEquals("\uE00F SMS national, whole week rate, Start SMS", firstScenarioPoM.smsNational.getText(), "failed");
+//        Assert.assertEquals("\uE00F SMS national, whole week rate, Start SMS", driver.findElementByAccessibilityId("SMS national, whole week rate, Start SMS").getText(), "failed");
 //        Assert.assertEquals("\uE00F MMS national, Start MMS", firstScenarioPoM.mmsNational.getText(), "failed");
 //        Assert.assertEquals("\uE00F Packet usage, Lifeline Data", firstScenarioPoM.packetUsageLifeline1.getText(), "failed");
 //        Assert.assertEquals("\uE00F Packet usage, Lifeline Data", firstScenarioPoM.getPacketUsageLifeline2.getText(), "failed");

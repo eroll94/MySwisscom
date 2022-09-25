@@ -1,8 +1,13 @@
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
+import java.util.List;
+
+import static io.appium.java_client.MobileBy.AndroidUIAutomator;
 
 public class SecondScenario extends TestBase{
 
@@ -17,6 +22,8 @@ public class SecondScenario extends TestBase{
     LogoutPoM logoutPoM;
     NavButtonsPoM navButtonsPoM;
 
+    NotificationPoM notificationPoM;
+
     @Test(description = "Trying to add wrong card number -- Test made by Myself-playground")
     public void addWrongCard() throws MalformedURLException, InterruptedException {
         iOSsetup();
@@ -25,6 +32,7 @@ public class SecondScenario extends TestBase{
         logoutPoM = new LogoutPoM(driver);
         navButtonsPoM = new NavButtonsPoM(driver);
         secondScenarioPoM = new SecondScenarioPoM(driver);
+
         //login and payment
         loginPoM.logIn("tpmabtjka_jcieqrv", "SixTest@12");
         //choose add payment
@@ -79,6 +87,42 @@ public class SecondScenario extends TestBase{
 //        secondScenarioPoM.closePayOnline();
         navButtonsPoM.panoramaBtnClick();
         logoutPoM.logOutMain();
+    }
+
+    @Test
+    public void payOnlineWithAddedCardAndroid() throws MalformedURLException, InterruptedException {
+        androidSetup();
+        System.out.println("Started app");
+        loginPoM = new LoginPoM(driver);
+        logoutPoM = new LogoutPoM(driver);
+        navButtonsPoM = new NavButtonsPoM(driver);
+        secondScenarioPoM = new SecondScenarioPoM(driver);
+        notificationPoM = new NotificationPoM(driver);
+        //login and payment
+        notificationPoM.clickOnNextBtn();
+        loginPoM.logIn("jzdvqp.ldrczgm@bluewin.ch", "SixTest@123");
+        //choose add payment
+        navButtonsPoM.billsBtnClick();
+        secondScenarioPoM.payOnlineMain();
+        Thread.sleep(3000);
+//        WebElement credCardVer = driver.findElementById("33");
+        String credCardVer = driver.findElementByXPath("//*[contains(@text,'Mastercard')]").getText();
+//        List<WebElement> credCardVer = driver.findElementsByXPath("//*[contains(@text,'Mastercard')]");
+//        String payOnlinePossibleCreditCardVer = credCardVer.toString();
+//        String newPayOnlinePossibleWithCredCard = payOnlinePossibleCreditCardVer
+        System.out.println("This is taken value from app: " + credCardVer);
+        Assert.assertEquals("Mastercard 520000xxxxxx0007", credCardVer,  "compared values are not same");
+
+
+        secondScenarioPoM.closePage();
+        Thread.sleep(2000);
+        WebElement secondClosePage = driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button");
+        Thread.sleep(2000);
+        secondClosePage.click();
+//        secondScenarioPoM.closePayOnline();
+        navButtonsPoM.panoramaBtnClick();
+        logoutPoM.logOutBtnAndroid();
+
     }
 
     @Test(priority = 1 , description = "2.2 Add credit card then pay with that card and delete at end")
@@ -139,6 +183,39 @@ public class SecondScenario extends TestBase{
         secondScenarioPoM.closePage();
 //        navButtonsPoM.panoramaBtnClick();
         logoutPoM.logOutMain();
+    }
+
+    @Test
+    public void payOnlineWithoutWidgetAndroid() throws MalformedURLException, InterruptedException {
+        androidSetup();
+        System.out.println("Started app");
+        loginPoM = new LoginPoM(driver);
+        logoutPoM = new LogoutPoM(driver);
+        navButtonsPoM = new NavButtonsPoM(driver);
+        secondScenarioPoM = new SecondScenarioPoM(driver);
+        notificationPoM = new NotificationPoM(driver);
+        //login and payment
+        notificationPoM.clickOnNextBtn();
+        loginPoM.logIn("kwxhsixp@wkgtcoq.ch", "SixTest@12");
+        //choose add payment
+        navButtonsPoM.billsBtnClick();
+        Thread.sleep(3000);
+
+        secondScenarioPoM.findByPayableBy();
+
+        secondScenarioPoM.payOnlineMain();
+        Thread.sleep(3000);
+        String credCardVer = driver.findElementByXPath("//*[contains(@text,'Mastercard')]").getText();
+        System.out.println("This is taken value from app: " + credCardVer);
+        Assert.assertEquals("Mastercard 520000xxxxxx0007", credCardVer,  "compared values are not same");
+        secondScenarioPoM.closePage();
+        Thread.sleep(2000);
+        WebElement secondClosePage = driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button");
+        Thread.sleep(2000);
+        secondClosePage.click();
+//        secondScenarioPoM.closePayOnline();
+        navButtonsPoM.panoramaBtnClick();
+        logoutPoM.logOutBtnAndroid();
     }
 
 }

@@ -22,7 +22,7 @@ public class SmokeTestAndroid extends TestBase {
         navButtonsPoM = new NavButtonsPoM(driver);
         notificationPoM = new NotificationPoM(driver);
         notificationPoM.clickOnNextBtn();
-        loginPoM.logIn("ccqgseo56.48", "Tester@123");
+        loginPoM.logIn("second.feb1", "SixTest@123");
         navButtonsPoM.billsBtnClick();
         logoutPoM.logOutBtnAndroid();
     }

@@ -1,14 +1,18 @@
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.FindsByAndroidUIAutomator;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.pagefactory.AndroidBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.appium.java_client.touch.offset.PointOption;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.touch.TouchActions;
 
 import javax.annotation.OverridingMethodsMustInvokeSuper;
 import java.util.HashMap;
+import java.util.List;
 
 import static io.appium.java_client.MobileBy.AndroidUIAutomator;
 
@@ -71,7 +75,12 @@ public class FirstScenarioPoM extends Base{
     MobileElement backToPreviosPageFirstScenario;
 
     @iOSXCUITFindBy(iOSNsPredicate = "label == \"blue Mobile L\"")
+//    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View[2]/android.view.View[15]/android.view.View")
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().text(\"Intercontinental Pack\"))")
     MobileElement mobileLFirstTest;
+
+
 
     @iOSXCUITFindBy(iOSNsPredicate = "label == \"Intercontinental Pack\"")
     MobileElement intercontinentalFirstTest;
@@ -139,7 +148,8 @@ public class FirstScenarioPoM extends Base{
     //accesId -->  Telephony to mobile network Swisscom, whole week rate, Start Voice
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeLink[@name=\"\uE00F SMS national, whole week rate, Start SMS\"]")
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"SMS national, whole week rate, Start SMS\"]/android.widget.TextView")
+//    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"SMS national, whole week rate, Start SMS\"]/android.widget.TextView")
+    @AndroidBy(xpath = "//android.view.View[@content-desc=\"SMS national, whole week rate, Start SMS\"]")
     MobileElement smsNational;
 
     //accessId -->  SMS national, whole week rate, Start SMS
@@ -189,7 +199,8 @@ public class FirstScenarioPoM extends Base{
     MobileElement mmsIncomingStartMms;
 
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"6.92\"])[2]")
-    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Total CHF 6.92\"))")
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"6.92\"))")
+//    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Total CHF 6.92\"))")
     MobileElement total;
 
 //    iosclasschain --> **/XCUIElementTypeOther[`value == "3"`][3]
@@ -302,8 +313,14 @@ public class FirstScenarioPoM extends Base{
                 + "new UiSelector().text(\"079 000 11 49\"));")).click();
         Thread.sleep(5000);
         clickOnRunningCostAndroid();
+    }
 
-//        click(detailsOfTheRunningCosts);
+    public void findFirstTestAndClickOnRunCostAndroid() throws InterruptedException {
+        Thread.sleep(4000);
+        clickOnRuninngCostForFirstTestAndroid();
+        Thread.sleep(6500);
+//        driver.findElementByClassName("android.widget.Button").click();
+        clickOnRunningCostAndroid();
 
     }
     public void clickOnRunningCostAndroid(){
@@ -311,6 +328,14 @@ public class FirstScenarioPoM extends Base{
                 + ".scrollable(true)).scrollIntoView("
                 + "new UiSelector().text(\"Details of the runnings costs\"));")).click();
     }
+
+    public void clickOnRuninngCostForFirstTestAndroid(){
+        driver.findElement(AndroidUIAutomator("new UiScrollable(new UiSelector()"
+                + ".scrollable(true)).scrollIntoView("
+                + "new UiSelector().text(\"849.75\"));")).click();
+
+    }
+
 
 
     public void removeRegex(){
