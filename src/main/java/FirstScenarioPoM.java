@@ -1,13 +1,12 @@
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.FindsByAndroidUIAutomator;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.TouchAction;
+import io.appium.java_client.*;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AndroidBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.appium.java_client.touch.offset.PointOption;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.touch.TouchActions;
 
 import javax.annotation.OverridingMethodsMustInvokeSuper;
@@ -16,9 +15,13 @@ import java.util.List;
 
 import static io.appium.java_client.MobileBy.AndroidUIAutomator;
 
-public class FirstScenarioPoM extends Base{
+public class FirstScenarioPoM extends Base {
 
-    HashMap<String,Object>scrollObject=new HashMap<>();
+    HashMap<String, Object> scrollObject = new HashMap<>();
+    Actions action=new Actions(driver);
+
+    TouchAction touchActionLogout = new TouchAction(driver);
+
     public FirstScenarioPoM(AppiumDriver driver) {
         super(driver);
     }
@@ -77,15 +80,18 @@ public class FirstScenarioPoM extends Base{
     @iOSXCUITFindBy(iOSNsPredicate = "label == \"blue Mobile L\"")
 //    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View[2]/android.view.View[15]/android.view.View")
     @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
-            ".scrollIntoView(new UiSelector().text(\"Intercontinental Pack\"))")
+            ".scrollIntoView(new UiSelector().textContains(\"Mobile L\"))")
     MobileElement mobileLFirstTest;
 
 
-
     @iOSXCUITFindBy(iOSNsPredicate = "label == \"Intercontinental Pack\"")
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"Intercontinental \"))")
     MobileElement intercontinentalFirstTest;
 
     @iOSXCUITFindBy(iOSNsPredicate = "label == \"Simply Digital\"")
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"Simply \"))")
     MobileElement simplyDigFirstTest;
 
     @iOSXCUITFindBy(iOSNsPredicate = "label == \"139.90\" AND name == \"139.90\" AND value == \"3\"")
@@ -126,7 +132,7 @@ public class FirstScenarioPoM extends Base{
 
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"079 000 11 49\"])[2]")
 //            classchain ---> **/XCUIElementTypeStaticText[`label == "079 000 26 06"`][2]
-            //name----? 079 000 26 06
+    //name----? 079 000 26 06
     MobileElement choosePhoneNumForSecondTest;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"6.92\"]")
@@ -149,7 +155,8 @@ public class FirstScenarioPoM extends Base{
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeLink[@name=\"\uE00F SMS national, whole week rate, Start SMS\"]")
 //    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"SMS national, whole week rate, Start SMS\"]/android.widget.TextView")
-    @AndroidBy(xpath = "//android.view.View[@content-desc=\"SMS national, whole week rate, Start SMS\"]")
+    @AndroidFindBy(xpath = "//*[contains(@text,'SMS national, whole week rate')]")
+//    @AndroidBy(xpath = "//android.view.View[@content-desc=\"SMS national, whole week rate, Start SMS\"]")
     MobileElement smsNational;
 
     //accessId -->  SMS national, whole week rate, Start SMS
@@ -226,39 +233,43 @@ public class FirstScenarioPoM extends Base{
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`label == \"Done\"`]")
     MobileElement doneBtnPdf;
 
-    public void clickOnDropDown(){
+    public void clickOnDropDown() {
         click(dropdownInv);
     }
 
-    public void chooseNumFromDrop(){
+    public void chooseNumFromDrop() {
         click(choosePhoneNumForSecondTest);
     }
 
-    public void clickOnRunCostForSecondTest(){
+    public void clickOnRunCostForSecondTest() {
         click(clickOnRunningCostForSecondTest);
     }
-    public void clickOnUsageDetails(){
+
+    public void clickOnUsageDetails() {
         click(usageDetails);
     }
 
-    public void clickOnFilter(){
+    public void clickOnFilter() {
         click(filter);
     }
-    public void clickOnDetailRunCost(){
+
+    public void clickOnDetailRunCost() {
         click(detailsOfTheRunningCosts);
     }
 
-    public void firstBp(){
+    public void firstBp() {
         click(biMonthlyFirst);
     }
-    public void secondBp(){
+
+    public void secondBp() {
         click(biMonthlySecond);
     }
+
     public void openAndClosePdf() throws InterruptedException {
 
-        HashMap<String,Object>scrollObject=new HashMap<>();
+        HashMap<String, Object> scrollObject = new HashMap<>();
         scrollObject.put("direction", "down");
-        scrollObject.put("xpath","//XCUIElementTypeButton[@name=\"Bill\"]");
+        scrollObject.put("xpath", "//XCUIElementTypeButton[@name=\"Bill\"]");
         driver.executeScript("mobile:scroll", scrollObject);
         driver.findElementByXPath("//XCUIElementTypeButton[@name=\"Bill\"]").click();
         Thread.sleep(7000);
@@ -268,17 +279,17 @@ public class FirstScenarioPoM extends Base{
                 .perform();
     }
 
-    public void clickOnFirstContainerInfirstScen(){
+    public void clickOnFirstContainerInfirstScen() {
         click(firstScenClickOnRunCost);
         click(allContracts);
         click(numForFirstScen);
         click(invoiceDetails);
     }
 
-    public void verifyRunningCost(){
+    public void verifyRunningCost() {
 
         scrollObject.put("direction", "down");
-        scrollObject.put("xpath","//XCUIElementTypeStaticText[@name=\"952.45\"]");
+        scrollObject.put("xpath", "//XCUIElementTypeStaticText[@name=\"952.45\"]");
         driver.executeScript("mobile:scroll", scrollObject);
 //        driver.findElementByXPath("//XCUIElementTypeStaticText[@name=\"952.45\"]").click();
         click(currMonthforFirstTestCost);
@@ -287,20 +298,20 @@ public class FirstScenarioPoM extends Base{
         click(detailsOfTheRunningCosts);
     }
 
-    public void clickOnBillForPreviosMonth(){
+    public void clickOnBillForPreviosMonth() {
         scrollObject.put("direction", "down");
-        scrollObject.put("xpath","//XCUIElementTypeStaticText[@name=\"846.25\"]");
+        scrollObject.put("xpath", "//XCUIElementTypeStaticText[@name=\"846.25\"]");
         driver.executeScript("mobile:scroll", scrollObject);
         click(billForPrevMonthFirstTest);
         click(allContracts);
         click(numForFirstTestInFirstScenario);
     }
 
-    public void thirdTestFirstScen(){
+    public void thirdTestFirstScen() {
         click(dropdownInv);
         click(numForThirdTestInFirstScenario);
         scrollObject.put("direction", "down");
-        scrollObject.put("xpath","(//XCUIElementTypeStaticText[@name=\"81.90\"])[2]");
+        scrollObject.put("xpath", "(//XCUIElementTypeStaticText[@name=\"81.90\"])[2]");
         driver.executeScript("mobile:scroll", scrollObject);
         click(biMonthforFirst);
 
@@ -312,7 +323,7 @@ public class FirstScenarioPoM extends Base{
                 + ".scrollable(true)).scrollIntoView("
                 + "new UiSelector().text(\"079 000 11 49\"));")).click();
         Thread.sleep(5000);
-        clickOnRunningCostAndroid();
+       click(clickOnRunningCostAndroid);
     }
 
     public void findFirstTestAndClickOnRunCostAndroid() throws InterruptedException {
@@ -320,26 +331,64 @@ public class FirstScenarioPoM extends Base{
         clickOnRuninngCostForFirstTestAndroid();
         Thread.sleep(6500);
 //        driver.findElementByClassName("android.widget.Button").click();
-        clickOnRunningCostAndroid();
-
     }
-    public void clickOnRunningCostAndroid(){
+
+//    public void clickOnRunningCostAndroid() {
+//        driver.findElement(AndroidUIAutomator("new UiScrollable(new UiSelector()"
+//                + ".scrollable(true)).scrollIntoView("
+//                + "new UiSelector().text(\"Details of the runnings costs\"));")).click();
+//    }
+
+    public void clickOnRuninngCostForFirstTestAndroid() {
         driver.findElement(AndroidUIAutomator("new UiScrollable(new UiSelector()"
                 + ".scrollable(true)).scrollIntoView("
-                + "new UiSelector().text(\"Details of the runnings costs\"));")).click();
-    }
+                + "new UiSelector().textContains(\"849.75\"));")).click();
+//        MobileElement element = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator(
+//                "new UiScrollable(new UiSelector().scrollable(true))" +
+//                        ".scrollIntoView(new UiSelector().textContains(\"part_text\"))"));
 
-    public void clickOnRuninngCostForFirstTestAndroid(){
-        driver.findElement(AndroidUIAutomator("new UiScrollable(new UiSelector()"
-                + ".scrollable(true)).scrollIntoView("
-                + "new UiSelector().text(\"849.75\"));")).click();
 
     }
-
-
-
-    public void removeRegex(){
+    public void scroolDownDetailCost(){
+     click(contractsClick);
+     action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build().perform();
+//     click(numForAndFirstTest);
+     click(clickOnRunningCostAndroid);
+//    action.sendKeys(Keys.SHIFT).build().perform();
+    action.sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).build().perform();
 
     }
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"contracts\"))")
+    MobileElement contractsClick;
+
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"Details of \"))")
+    MobileElement clickOnRunningCostAndroid;
+
+    public void clickOnPayableFirstScen() throws InterruptedException {
+        click(payableByDiv);
+        Thread.sleep(2000);
+        action.sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.SPACE).build().perform();
+        Thread.sleep(2000);
+//        click(clickOnPdf);
+
+        click(closePdf);
+    }
+
+
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"payable by\"))")
+    MobileElement payableByDiv;
+
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"Bil\"))")
+    MobileElement clickOnPdf;
+
+    @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc=\"Navigate up\"]")
+    MobileElement closePdf;
+
+
 
 }
+

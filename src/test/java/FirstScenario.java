@@ -1,6 +1,9 @@
 import com.testautomationguru.utility.PDFUtil;
 import io.appium.java_client.FindsByAndroidUIAutomator;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,7 +19,10 @@ public class FirstScenario extends TestBase {
     NotificationPoM notificationPoM;
     FirstScenarioPoM firstScenarioPoM;
 
+
     PDFUtil pdfUtil = new PDFUtil();
+
+
 
     @Test
     public void tc1() throws IOException, InterruptedException {
@@ -27,6 +33,7 @@ public class FirstScenario extends TestBase {
         navButtonsPoM = new NavButtonsPoM(driver);
         secondScenarioPoM = new SecondScenarioPoM(driver);
         firstScenarioPoM = new FirstScenarioPoM(driver);
+
         //login and payment
 //        loginPoM.logIn("tfmaogqevw@jcxkkvp.com", "SixTest@1"); - web
 
@@ -59,7 +66,7 @@ public class FirstScenario extends TestBase {
     }
 
     @Test
-    public void tc1Android() throws MalformedURLException, InterruptedException {
+    public void tc1Android() throws IOException, InterruptedException {
         androidSetup();
         System.out.println("Started app");
         loginPoM = new LoginPoM(driver);
@@ -71,22 +78,26 @@ public class FirstScenario extends TestBase {
         //login and payment
         notificationPoM.clickOnNextBtn();
         loginPoM.logIn("second.feb1", "SixTest@123");
+
         navButtonsPoM.billsBtnClick();
         firstScenarioPoM.findFirstTestAndClickOnRunCostAndroid();
         Thread.sleep(3000);
-//        WebElement mobileFirstTestUi = ((FindsByAndroidUIAutomator)driver).findElementByAndroidUIAutomator("new UiSelector().text(\"Intercontinental Pack\")");
+        firstScenarioPoM.scroolDownDetailCost();
+
         Assert.assertEquals("blue Mobile L", firstScenarioPoM.mobileLFirstTest.getText(), "failed");
-//        Assert.assertEquals("Intercontinental Pack", firstScenarioPoM.intercontinentalFirstTest.getText(), "failed");
-//        Assert.assertEquals("Simply Digital", firstScenarioPoM.simplyDigFirstTest.getText(), "failed");
-////        Assert.assertEquals("139.90", firstScenarioPoM.totalSubFirstTest.getText(), "failed");
-//        Assert.assertEquals("91.90", firstScenarioPoM.conOutgoingAbroad.getText(), "failed");
-//        Assert.assertEquals("\uE00F Telephony, included", firstScenarioPoM.telephonyIncludedFirstTest.getText(), "failed");
-//        Assert.assertEquals("\uE00F Telephony, standard tariff", firstScenarioPoM.telephonyStandardTarifFirstTest.getText(), "failed");
-//        Assert.assertEquals("\uE00F SMS/MMS, included", firstScenarioPoM.smsMmsIncludedFirstTest.getText(), "failed");
-//        Assert.assertEquals("10.80", firstScenarioPoM.conIncommingAbroad.getText(), "failed");
-//        Assert.assertEquals("\uE00F Telephony, included", firstScenarioPoM.telephonyIncludedFirstTestIncoming.getText(), "failed");
-//        Assert.assertEquals("\uE00F Telephony, standard tariff", firstScenarioPoM.telStandardIncoming.getText(), "failed");
-//        Assert.assertEquals("\uE00F 102.70", firstScenarioPoM.totalConFirstTest.getText(), "failed");
+        Assert.assertEquals("Intercontinental Pack",firstScenarioPoM.intercontinentalFirstTest.getText(), "failed");
+        Assert.assertEquals("Simply Digital", firstScenarioPoM.simplyDigFirstTest.getText(), "failed");
+
+        navButtonsPoM.billsBtnClick();
+        firstScenarioPoM.clickOnPayableFirstScen();
+        String pdfText = String.valueOf(pdfUtil.getText("C:/Users/Erol/Desktop/Swisscom_pdf/MYSWISSCOM_Android.pdf"));
+//        String pdfText = String.valueOf(pdfUtil.getText("C:/Users/Erol/Desktop/Swisscom_pdf/MYSWISSCOM_Android.pdf")); ///--> put right path for pdf!!
+        System.out.println("This is translated text from pdf is : " + pdfText);
+        Assert.assertTrue(pdfText.contains("Second Feb"),"failed");
+        Assert.assertTrue(pdfText.contains("CHF 846.25"),"failed");
+        navButtonsPoM.billsBtnClick();
+        logoutPoM.logOutBtnAndroid();
+
     }
 
 
@@ -143,7 +154,7 @@ public class FirstScenario extends TestBase {
         firstScenarioPoM.findPrepaidNumForAndroid();
 
         Assert.assertEquals("Telephony to mobile network Swisscom, whole week rate, Start Voice", firstScenarioPoM.telephonyToMobileNetwork.getText(), "failed");
-//        Assert.assertEquals("\uE00F SMS national, whole week rate, Start SMS", driver.findElementByAccessibilityId("SMS national, whole week rate, Start SMS").getText(), "failed");
+        Assert.assertEquals("\uE00F SMS national, whole week rate, Start SMS", firstScenarioPoM.smsNational.getText(), "failed");
 //        Assert.assertEquals("\uE00F MMS national, Start MMS", firstScenarioPoM.mmsNational.getText(), "failed");
 //        Assert.assertEquals("\uE00F Packet usage, Lifeline Data", firstScenarioPoM.packetUsageLifeline1.getText(), "failed");
 //        Assert.assertEquals("\uE00F Packet usage, Lifeline Data", firstScenarioPoM.getPacketUsageLifeline2.getText(), "failed");

@@ -7,24 +7,36 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 public class LoginPoM extends Base{
 
     @iOSXCUITFindBy(iOSNsPredicate = "label == 'Log in'")
-//    @AndroidFindBy(className = "android.widget.Button")
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View[3]/android.view.View/android.widget.Button\n")
+    @AndroidFindBy(className = "android.widget.Button")
+//    @AndroidFindBy(uiAutomator = "uiAutomator = \"new UiScrollable(new UiSelector().scrollable(true))\" +\n" +
+//            "            \".scrollIntoView(new UiSelector().textContains(\"Log \"))\")")
+//    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View[3]/android.view.View/android.widget.Button\n")
     MobileElement loginBtnMain;
 
     @iOSXCUITFindBy(iOSNsPredicate = "label == 'Username or mobile number'")
+//    @AndroidFindBy(id = "username")
     @AndroidFindBy(className = "android.widget.EditText")
     MobileElement usernameElement;
 
     @iOSXCUITFindBy (iOSNsPredicate = "label == 'Continue'")
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"WebView__Window\"]/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View[4]/android.view.View[2]/android.view.View/android.widget.Button\n")
+//    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+//            ".scrollIntoView(new UiSelector().textContains(\"Contin\"))")
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().text(\"Continue\"))")
+//    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"WebView__Window\"]/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View[4]/android.view.View[2]/android.view.View/android.widget.Button\n")
     MobileElement continueBtn;
 
     @iOSXCUITFindBy (iOSNsPredicate = "label == 'Password'")
+//    @AndroidFindBy(id = "password")
     @AndroidFindBy(className = "android.widget.EditText")
     MobileElement passwordElement;
 
     @iOSXCUITFindBy (iOSNsPredicate = "label == 'Login'")
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"WebView__Window\"]/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[3]/android.view.View/android.widget.Button")
+//    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+//            ".scrollIntoView(new UiSelector().textContains(\"Logi\"))")
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().text(\"Login\"))")
+//    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"WebView__Window\"]/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[3]/android.view.View/android.widget.Button")
     MobileElement loginBtn;
 
 
