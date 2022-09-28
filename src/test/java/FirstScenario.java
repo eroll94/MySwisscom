@@ -154,16 +154,16 @@ public class FirstScenario extends TestBase {
         firstScenarioPoM.findPrepaidNumForAndroid();
 
         Assert.assertEquals("Telephony to mobile network Swisscom, whole week rate, Start Voice", firstScenarioPoM.telephonyToMobileNetwork.getText(), "failed");
-        Assert.assertEquals("\uE00F SMS national, whole week rate, Start SMS", firstScenarioPoM.smsNational.getText(), "failed");
-//        Assert.assertEquals("\uE00F MMS national, Start MMS", firstScenarioPoM.mmsNational.getText(), "failed");
-//        Assert.assertEquals("\uE00F Packet usage, Lifeline Data", firstScenarioPoM.packetUsageLifeline1.getText(), "failed");
-//        Assert.assertEquals("\uE00F Packet usage, Lifeline Data", firstScenarioPoM.getPacketUsageLifeline2.getText(), "failed");
-//        Assert.assertEquals("\uE00F Packet, 3071", firstScenarioPoM.packet3071.getText(), "failed");
-//        Assert.assertEquals("\uE00F Packet, Start Data", firstScenarioPoM.startData.getText(), "failed");
-//        Assert.assertEquals("\uE00F SMS, worldwide tariff, Start SMS", firstScenarioPoM.smsWWtarif.getText(), "failed");
-//        Assert.assertEquals("\uE00F MMS outgoing abroad, Start MMS", firstScenarioPoM.mmsOutStartMms.getText(), "failed");
-//        Assert.assertEquals("\uE00F Packet, Start Data", firstScenarioPoM.startData2.getText(), "failed");
-//        Assert.assertEquals("\uE00F MMS incoming abroad, Start MMS", firstScenarioPoM.mmsIncomingStartMms.getText(), "failed");
+        Assert.assertEquals("SMS national, whole week rate, Start SMS", firstScenarioPoM.smsNational.getText(), "failed");
+        Assert.assertEquals("MMS national, Start MMS", firstScenarioPoM.mmsNational.getText(), "failed");
+        Assert.assertEquals("Packet usage, Lifeline Data", firstScenarioPoM.packetUsageLifeline1.getText(), "failed");
+        Assert.assertEquals("Packet usage, Lifeline Data", firstScenarioPoM.getPacketUsageLifeline2.getText(), "failed");
+        Assert.assertEquals("Packet, 3071", firstScenarioPoM.packet3071.getText(), "failed");
+        Assert.assertEquals("Packet, Start Data", firstScenarioPoM.startData.getText(), "failed");
+        firstScenarioPoM.sendSixTabsforPrepaid();
+        Assert.assertEquals("SMS, worldwide tariff, Start SMS", firstScenarioPoM.smsWWtarif.getText(), "failed");
+        Assert.assertEquals("MMS outgoing abroad, Start MMS", firstScenarioPoM.mmsOutStartMms.getText(), "failed");
+        Assert.assertEquals("MMS incoming abroad, Start MMS", firstScenarioPoM.mmsIncomingStartMms.getText(), "failed");
 //        Assert.assertEquals("6.92", firstScenarioPoM.total.getText(), "failed");
         navButtonsPoM.billsBtnClick();
         logoutPoM.logOutBtnAndroid();

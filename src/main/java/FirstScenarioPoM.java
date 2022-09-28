@@ -154,60 +154,61 @@ public class FirstScenarioPoM extends Base {
     //accesId -->  Telephony to mobile network Swisscom, whole week rate, Start Voice
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeLink[@name=\"\uE00F SMS national, whole week rate, Start SMS\"]")
-//    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"SMS national, whole week rate, Start SMS\"]/android.widget.TextView")
-    @AndroidFindBy(xpath = "//*[contains(@text,'SMS national, whole week rate')]")
-//    @AndroidBy(xpath = "//android.view.View[@content-desc=\"SMS national, whole week rate, Start SMS\"]")
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"SMS national, whole week rate\"))")
     MobileElement smsNational;
 
     //accessId -->  SMS national, whole week rate, Start SMS
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeLink[@name=\"\uE00F MMS national, Start MMS\"]")
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"MMS national, Start MMS\"]/android.widget.TextView")
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"MMS national,\"))")
     MobileElement mmsNational;
-
-    //accessId -->  MMS national, Start MMS
-
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeLink[@name=\"\uE00F Packet usage, Lifeline Data\"])[1]")
-    @AndroidFindBy(xpath = "(//android.view.View[@content-desc=\"Packet usage, Lifeline Data\"])[1]/android.widget.TextView")
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"Packet usage,\"))")
     MobileElement packetUsageLifeline1;
 
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeLink[@name=\"\uE00F Packet usage, Lifeline Data\"])[2]")
-    @AndroidFindBy(xpath = "(//android.view.View[@content-desc=\"Packet usage, Lifeline Data\"])[2]/android.widget.TextView")
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\", Lifeline Data\"))")
     MobileElement getPacketUsageLifeline2;
 
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeLink[@name=\"\uE00F Packet, 3071\"])[1]")
-    @AndroidFindBy(xpath = "(//android.view.View[@content-desc=\"Packet, 3071\"])[1]/android.widget.TextView")
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"3071\"))")
     MobileElement packet3071;
 
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeLink[@name=\"\uE00F Packet, Start Data\"])[1]")
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Packet, Start Data\"]/android.widget.TextView\n")
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"Packet, Start Data\"))")
     MobileElement startData;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeLink[@name=\"\uE00F SMS, worldwide tariff, Start SMS\"]")
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"SMS, worldwide tariff, Start SMS\"]/android.widget.TextView")
-
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"SMS, worldwide tariff,\"))")
     MobileElement smsWWtarif;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeLink[@name=\"\uE00F MMS outgoing abroad, Start MMS\"]")
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"MMS outgoing abroad, Start MMS\"]/android.widget.TextView")
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"MMS outgoing abroad,\"))")
     MobileElement mmsOutStartMms;
 
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeLink[@name=\"\uE00F Packet, 3071\"])[2]")
-    @AndroidFindBy(xpath = "(//android.view.View[@content-desc=\"Packet, 3071\"])[2]/android.widget.TextView")
+
     MobileElement packet2;
 
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeLink[@name=\"\uE00F Packet, Start Data\"])[2]")
-    @AndroidFindBy(xpath = "(//android.view.View[@content-desc=\"Packet, Start Data\"])[2]/android.widget.TextView")
+
     MobileElement startData2;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeLink[@name=\"\uE00F MMS incoming abroad, Start MMS\"]")
-//    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"MMS incoming abroad, Start MMS\")")
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"MMS incoming abroad, Start MMS\"]/android.widget.TextView")
-    //android.view.View[@content-desc=\"Telephony to mobile network Swisscom, whole week rate, Start Voice\"]/android.widget.TextView"
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"MMS incoming abroad\"))")
     MobileElement mmsIncomingStartMms;
 
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"6.92\"])[2]")
-    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"6.92\"))")
-//    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Total CHF 6.92\"))")
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+            ".scrollIntoView(new UiSelector().textContains(\"6.92\"))")
     MobileElement total;
 
 //    iosclasschain --> **/XCUIElementTypeOther[`value == "3"`][3]
@@ -322,8 +323,16 @@ public class FirstScenarioPoM extends Base {
         driver.findElement(AndroidUIAutomator("new UiScrollable(new UiSelector()"
                 + ".scrollable(true)).scrollIntoView("
                 + "new UiSelector().text(\"079 000 11 49\"));")).click();
-        Thread.sleep(5000);
+        Thread.sleep(3500);
        click(clickOnRunningCostAndroid);
+       Thread.sleep(2000);
+        action.sendKeys(Keys.TAB).sendKeys(Keys.TAB).build().perform();
+        Thread.sleep(2000);
+    }
+    public void sendSixTabsforPrepaid() throws InterruptedException {
+        Thread.sleep(2000);
+        action.sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).build().perform();
+        Thread.sleep(2000);
     }
 
     public void findFirstTestAndClickOnRunCostAndroid() throws InterruptedException {
