@@ -376,6 +376,16 @@ public class FirstScenarioPoM extends Base {
         click(closePdf);
     }
 
+    public void clickOnPayableFirstScenBiMonthly() throws InterruptedException {
+        click(payableByDiv);
+        Thread.sleep(2000);
+        action.sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.SPACE).build().perform();
+        Thread.sleep(2000);
+//        click(clickOnPdf);
+
+        click(closePdf);
+    }
+
 
     @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
             ".scrollIntoView(new UiSelector().textContains(\"payable by\"))")

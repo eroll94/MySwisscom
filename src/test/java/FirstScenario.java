@@ -194,9 +194,34 @@ public class FirstScenario extends TestBase {
         navButtonsPoM.billsBtnClick();
         logoutPoM.logOutMain();
 
-
-
     }
+
+    @Test
+    public void biMonthlyAndroid() throws IOException, InterruptedException {
+        androidSetup();
+        System.out.println("Started app");
+        loginPoM = new LoginPoM(driver);
+        logoutPoM = new LogoutPoM(driver);
+        navButtonsPoM = new NavButtonsPoM(driver);
+        secondScenarioPoM = new SecondScenarioPoM(driver);
+        firstScenarioPoM = new FirstScenarioPoM(driver);
+        notificationPoM = new NotificationPoM(driver);
+        //login and payment
+        notificationPoM.clickOnNextBtn();
+        loginPoM.logIn("rfshscye.ftcbhyxviv", "SixTest@12");
+
+        navButtonsPoM.billsBtnClick();
+        firstScenarioPoM.clickOnPayableFirstScenBiMonthly();
+        String pdfText = String.valueOf(pdfUtil.getText("C:/Users/Erol/Desktop/Swisscom_pdf/MYSWISSCOM_BiMonthlyAndroid.pdf"));
+//        String pdfText = String.valueOf(pdfUtil.getText("C:/Users/Erol/Desktop/Swisscom_pdf/MYSWISSCOM_Android.pdf")); ///--> put right path for pdf!!
+        System.out.println("This is translated text from pdf is : " + pdfText);
+        Assert.assertTrue(pdfText.contains("Bilnaz Aebli"),"failed");
+        Assert.assertTrue(pdfText.contains("CHF 81.90"),"failed");
+        Assert.assertTrue(pdfText.contains("032 931 35 98"), "failed");
+        navButtonsPoM.billsBtnClick();
+        logoutPoM.logOutBtnAndroid();
+    }
+
     @Test(description = "pdfs should be verified only")
     public void tc4() throws IOException, InterruptedException {
         iOSsetup();
