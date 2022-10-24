@@ -1,3 +1,4 @@
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
@@ -17,5 +18,9 @@ public class SmokeTestIOS extends TestBase {
         navButtonsPoM.billsBtnClick();
         logoutPoM.logOutMain();
 
+    }
+    @AfterTest
+    public void cleanUp(){
+        driver.quit();
     }
 }

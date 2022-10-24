@@ -1,6 +1,7 @@
 import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import io.appium.java_client.android.nativekey.AndroidKey;
 
@@ -21,10 +22,14 @@ public class SmokeTestAndroid extends TestBase {
         logoutPoM = new LogoutPoM(driver);
         navButtonsPoM = new NavButtonsPoM(driver);
         notificationPoM = new NotificationPoM(driver);
-        notificationPoM.clickOnNextBtn();
+//        notificationPoM.clickOnNextBtn();
         loginPoM.logIn("second.feb1", "SixTest@123");
         navButtonsPoM.billsBtnClick();
         logoutPoM.logOutBtnAndroid();
+    }
+    @AfterTest
+    public void cleanUp(){
+        driver.quit();
     }
 
 }
